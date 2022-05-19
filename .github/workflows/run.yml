@@ -1,0 +1,26 @@
+name: Regular push
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Get the dependency
+      run: |
+        curl https://get.okteto.com -sSfL | sh
+
+    - name: Login
+      run: |
+        okteto login --token ${{ secrets.AUTHKEY }}
+
+    - name: Push demo repo
+      run: |
+        okteto pipeline deploy --repository https://github.com/colokccberhadiah/py
